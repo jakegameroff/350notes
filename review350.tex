@@ -119,6 +119,38 @@ Then \( G \) has a Hamiltonian cycle.
 \textbf{Menger 2.} Let \( s, t \in V(G) \) be distinct and \( k \geq 1 \). Then exactly one of the following holds. (1) There exist pairwise internally disjoint paths \( P_1, \hdots , P_k \) in \( G \) with ends \( s,t \). (2) There exists \(  X \subseteq V(G) \) such that \( s \in X \), \( t \in V(G) \setminus X \), and \( |\delta (X)| < k \).
 \section{Directed Graphs \& Network Flows}
 \textbf{Lemma 9.1.} Let \( G \) be a digraph. Let \( s, t \in V(G) \). Then there does not exist a directed path in \( G \) from \( s \) to \( t \) iff there exists \( X \subseteq V(G) \) such that \( s \in X \), \( t \in V(G) \setminus X \), and \( \delta ^{+}(X) = \emptyset   \). \\
-\textbf{Lemma 9.2.} Let \( \varphi  \) be an \( (s,t) \)-flow on a digraph \( G \) with value \( k \). Then for any \( X \subseteq V(G) \) such that \( s \in X \), \( t \in V(G) \setminus X \), we have \[\sum_{e \in \delta ^{+}(X) }^{}\varphi (e) - \sum_{e \in \delta ^{-}(X)}^{}\varphi (e) = k.\] 
+\textbf{Lemma 9.2.} Let \( \varphi  \) be an \( (s,t) \)-flow on a digraph \( G \) with value \( k \). Then for any \( X \subseteq V(G) \) such that \( s \in X \), \( t \in V(G) \setminus X \), we have \[\sum_{e \in \delta ^{+}(X) }^{}\varphi (e) - \sum_{e \in \delta ^{-}(X)}^{}\varphi (e) = k.\]
+\section{Definitions}
+\begin{enumerate}
+	\item \textbf{Matching.} A matching \( M \subseteq E(G) \) in a graph \( G \) is a collection of non-loop edges so that every vertex of \( G \) is incident to at most one edge of \( M \).
+	\item \textbf{M-alternating path.} An \( M \)-alternating path \( P \) is a path whose edges alternate between belonging to \( M \) and belonging to \( E(G) \setminus M \). Equivalently, every internal vertex of the path is incident to one edge in \( M \cap E(P) \) and one edge of \( (E(G) \setminus M) \cap E(P). \)
+	\item \textbf{M-augmenting path.} A path \( P \) is \( M \)-augmenting if \( |P| \geq 1 \), it is \( M \)-alternating, and the ends of \( P \) belong to no edge of \( M \) (whether in \( P \) or not).
+	\item \textbf{Vertex cover.} A vertex cover is a subset \( X \subseteq V(G) \) if every edge of \( G \) has an end in \( X \).
+	\item \( \nu (G) \) is the \textbf{matching number} of \( G \), i.e. the maximum size of a matching in \( G \). \( \tau (G) \) is the minimum size of a vertex cover in \( G \).
+	\item \textbf{Cover.} A matching \( M \) covers \( Y \subseteq V(G) \) is every vertex in \( Y \) is incident to an edge of \( M \).
+	\item \textbf{Perfect matching.} \( M \) is a perfect matching if it covers \( V(G) \).
+	\item \textbf{Separation.} A pair \( (A,B) \), \( A,B \subseteq V(G) \) is called a separation if \( A \cup B = V(G) \) and no edge of \( G \) has one end in \( A \setminus B \) and another in \( B \setminus A \), i.e. any edge from \( A \) to \( B \) has an end in \( A \cap B \).
+	\item \textbf{k-Connected.} A graph if \( k \)-connected if \( |V(G)| \geq k +1  \) and \( G \setminus X \) is connected for every \( X \subseteq V(G) \) with \( |X| \leq k+1. \)
+	\item For \( X \subseteq V(G) \), let \( \delta (X) \) denote the set of all edges of \( G \) with one end in \( X \) and another in \( V(G) \setminus X \). Let \( N(X) \) the set of all neighbours of vertices in \( X \).
+	\item \textbf{Line graph.} The line graph \( L(G) \) of \( G \) has \( V(L(G)) = E(G) \), and two vertices of \( L(G) \) are adjacent iff the edges they represent share an end in \( G \).
+	\item \textbf{Directed graph.} A directed graph (digraph) is a graph where for every edge, one of its ends is chosen as a head and the other as a tail. An edge is said to be directed from its tail to its head.
+	\item \textbf{Directed path.} A directed path from \( s \) to \( t \) in a digraph is a path in which every edge is traversed from its tail to its head as we follow the path from \( s \) to \( t \).
+	\item For a set \( X \subseteq V(G) \), we let \( \delta ^{+} (X) \) denote the set of all edges with tail in \( X \) and head in \( V(G) \setminus X \); we let \( \delta ^{-} (X) = \delta ^{+} (V(G) \setminus X)  \).
+	\item \textbf{(s,t)-Flow.} Let \( G \) be a digraph, \( s , t \in V(G) \). A function \( \varphi : E(G) \to \mathbb{R}^{+}  \) is an \( (s,t) \)-flow if for every \( v \in V(G) \setminus \{ s,t\}  \), \( \sum_{e \in \delta ^{-1}(v) }^{}\varphi (e)= \sum_{e \in \delta ^{-} (v)}^{} \varphi (e) \). The \textbf{value} of \( \varphi  \) is \( \sum_{e \in \delta ^{+} (s)}^{}\varphi (e) - \sum_{e \in \delta ^{-} (s)}^{}\varphi (e). \) 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{enumerate}
 \end{document}
 
