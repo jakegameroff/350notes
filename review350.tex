@@ -136,7 +136,7 @@ Then \( G \) has a Hamiltonian cycle.
 	\item \textbf{Directed graph.} A directed graph (digraph) is a graph where for every edge, one of its ends is chosen as a head and the other as a tail. An edge is said to be directed from its tail to its head.
 	\item \textbf{Directed path.} A directed path from \( s \) to \( t \) in a digraph is a path in which every edge is traversed from its tail to its head as we follow the path from \( s \) to \( t \).
 	\item For a set \( X \subseteq V(G) \), we let \( \delta ^{+} (X) \) denote the set of all edges with tail in \( X \) and head in \( V(G) \setminus X \); we let \( \delta ^{-} (X) = \delta ^{+} (V(G) \setminus X)  \).
-	\item \textbf{(s,t)-Flow.} Let \( G \) be a digraph, \( s , t \in V(G) \). A function \( \varphi : E(G) \to \mathbb{R}^{+}  \) is an \( (s,t) \)-flow if for every \( v \in V(G) \setminus \{ s,t\}  \), \( \sum_{e \in \delta ^{-1}(v) }^{}\varphi (e)= \sum_{e \in \delta ^{-} (v)}^{} \varphi (e) \). The \textbf{value} of \( \varphi  \) is \( \sum_{e \in \delta ^{+} (s)}^{}\varphi (e) - \sum_{e \in \delta ^{-} (s)}^{}\varphi (e). \) 
+	\item \textbf{(s,t)-Flow.} Let \( G \) be a digraph, \( s , t \in V(G) \). A function \( \varphi : E(G) \to \mathbb{R}^{+}  \) is an \( (s,t) \)-flow if for every \( v \in V(G) \setminus \{ s,t\}  \), \( \sum_{e \in \delta ^{+}(v) }^{}\varphi (e)= \sum_{e \in \delta ^{-} (v)}^{} \varphi (e) \). The \textbf{value} of \( \varphi  \) is \( \sum_{e \in \delta ^{+} (s)}^{}\varphi (e) - \sum_{e \in \delta ^{-} (s)}^{}\varphi (e). \) 
 	
 	
 	
