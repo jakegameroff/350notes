@@ -136,20 +136,46 @@ Then \( G \) has a Hamiltonian cycle.
 	\item \textbf{Directed graph.} A directed graph (digraph) is a graph where for every edge, one of its ends is chosen as a head and the other as a tail. An edge is said to be directed from its tail to its head.
 	\item \textbf{Directed path.} A directed path from \( s \) to \( t \) in a digraph is a path in which every edge is traversed from its tail to its head as we follow the path from \( s \) to \( t \).
 	\item For a set \( X \subseteq V(G) \), we let \( \delta ^{+} (X) \) denote the set of all edges with tail in \( X \) and head in \( V(G) \setminus X \); we let \( \delta ^{-} (X) = \delta ^{+} (V(G) \setminus X)  \).
-	\item \textbf{(s,t)-Flow.} Let \( G \) be a digraph, \( s , t \in V(G) \). A function \( \varphi : E(G) \to \mathbb{R}^{+}  \) is an \( (s,t) \)-flow if for every \( v \in V(G) \setminus \{ s,t\}  \), \( \sum_{e \in \delta ^{+}(v) }^{}\varphi (e)= \sum_{e \in \delta ^{-} (v)}^{} \varphi (e) \). The \textbf{value} of \( \varphi  \) is \( \sum_{e \in \delta ^{+} (s)}^{}\varphi (e) - \sum_{e \in \delta ^{-} (s)}^{}\varphi (e). \) 
+	\item \textbf{(s,t)-Flow.} Let \( G \) be a digraph, \( s , t \in V(G) \). A function \( \varphi : E(G) \to \mathbb{R}^{+}  \) is an \( (s,t) \)-flow if for every \( v \in V(G) \setminus \{ s,t\}  \), \( \sum_{e \in \delta ^{+}(v) }^{}\varphi (e)= \sum_{e \in \delta ^{-} (v)}^{} \varphi (e) \). The \textbf{value} of \( \varphi  \) is \( \sum_{e \in \delta ^{+} (s)}^{}\varphi (e) - \sum_{e \in \delta ^{-} (s)}^{}\varphi (e). \)
+\end{enumerate}
+\section{Combinatorics}
+\begin{enumerate}
+	\item Max number of edges in simple graph on \( n \geq 1 \) vertices (i.e. \( |E(K_n)| \)) is \( \frac{n(n-1)}{2}  \).
+	\item No formula for number of graphs up to isomorphism on \( n \) vertices; number of graphs up to isomorphism with \( n \) edges is \( 2^{\binom{n}{2} }  \).
+	\item Number of spanning trees on \( n \) labelled vertices (i.e. in \( K_n \)) is \( n^{n-2}  \).
+	\item Number of ways to label a path on \( n \) vertices: \( n! / 2 \) and a star on \( n \) vertices: \( n \).
+	\item \( \nu(K_n) = \lfloor n / 2 \rfloor \), \( \tau (K_n) = n - 1 \), \( \nu (C_n) = \lfloor n / 2 \rfloor \), \( \tau (C_n) = \lceil n / 2 \rceil \).
 	
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+\end{enumerate}
+\section{Strategy}
+\begin{enumerate}
+	\item \textbf{Is \( G \) connected}: look at connected components and derive a contradiction.
+	\item \textbf{Is \( G \) bipartite}: look at possible sizes of \( A,B \) in a bipartition, does this contradict the vertex degrees?
+	\item \textbf{Is \( G \) 2-connected}:
+	\item \textbf{Does \( G \) have an Euler tour}: yes if every vertex degree even (and must be connected)?
+	\item \textbf{Does \( G \) have an Euler trail}: yes if \( G \) connected and has at most two vertices of odd degree. 
+	\item \textbf{Does \( G \) have Hamiltonian cycle}:
+		\begin{enumerate}
+			\item No if there is non-null \( X \subseteq V(G) \) such that \( G \setminus X \) has more than \( |X| \) components;
+			\item Yes if \( n \geq 3 \) vertices, and if for every pair of non-adjacent vertices \( \deg u + \dev v \geq |V(G)| = n \).
+			\item Yes if \( |V(G)| \geq 3 \) and either (1) \( \deg v \geq n / 2 \) (2) \( |E(G)| \geq \binom{n}{2} - n + 3 \).
+			
+			
+			
+		\end{enumerate}
+	\item \textbf{Does \( G \) have a perfect matching}:
+		\begin{enumerate}
+			\item Yes if bipartite and all vertices have degree \( d \geq 1 \).
+			\item Yes iff \( \nu (G) = \frac{|V(G)|}{2}  \). If bipartite, this is equivalent to every vertex cover \( X \) is such that \( |X| \geq \frac{|V(G)|}{2}  \).
+		\end{enumerate}
+\end{enumerate}
+\textbf{Useful inequalities}:
+\begin{enumerate}
+	\item If every vertex in \( G \) has degree at most \( d \), then \( d|X| \geq \sum_{v \in V(G)}^{}\deg v \geq |E(G)| \) 
 	
 \end{enumerate}
 \end{document}
