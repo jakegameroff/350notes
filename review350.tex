@@ -107,6 +107,7 @@ Then \( G \) has a Hamiltonian cycle.
 \textbf{Lemma 7.1.} Let \( G \) be a loopless graph. Then \( \nu (G) \leq \tau (G) \leq 2 \nu(G) \). \\
 \textbf{Lemma 7.2.} A matching \( M \) in \( G \) has maximum size iff there does not exist an \( M \)-augmenting path in \( G \). \\
 \textbf{Konig.} If \( G \) is bipartite, then \( \nu (G) = \tau (G) \). \\
+\textbf{Konig rephrased.} Let \( G \) bipartite. \( G \) has a matching \( M \) with \( |M| \geq k \iff \) There does not exist \( X \subseteq V(G) \) with \( |X| < k \) such that every edge of \( G \) has an end in \( X \), i.e. there is no vertex cover with \( < k \) vertices. \\
 \textbf{Theorem 7.4.} Let \( d \geq 1 \) be an integer, let \( G \) bipartite such that \( \deg v = d \) for every \( v \in  V(G) \). Then \( G \) has a perfect matching. \\
 \textbf{Hall.} Let \( G \) bipartite with bipartition \( (A,B) \). Then \( G \) has a matching \( M \) covering \( A \) iff \( |N(S)| \geq |S| \) for every \( S \subseteq A \). \\
 \textbf{Menger.} Let \( s,t \in V(G) \) be a pair of distinct non-adjacent vertices of \( G \), and let \( k \geq 1 \) be an integer. Then exactly one of the following holds.
@@ -161,7 +162,7 @@ Then \( G \) has a Hamiltonian cycle.
 	\item \textbf{Does \( G \) have Hamiltonian cycle}:
 		\begin{enumerate}
 			\item No if there is non-null \( X \subseteq V(G) \) such that \( G \setminus X \) has more than \( |X| \) components;
-			\item Yes if \( n \geq 3 \) vertices, and if for every pair of non-adjacent vertices \( \deg u + \dev v \geq |V(G)| = n \).
+			\item Yes if \( n \geq 3 \) vertices, and if for every pair of non-adjacent vertices \( \deg u + \deg v \geq |V(G)| = n \).
 			\item Yes if \( |V(G)| \geq 3 \) and either (1) \( \deg v \geq n / 2 \) (2) \( |E(G)| \geq \binom{n}{2} - n + 3 \).
 			
 			
@@ -178,5 +179,6 @@ Then \( G \) has a Hamiltonian cycle.
 	\item If every vertex in \( G \) has degree at most \( d \), then \( d|X| \geq \sum_{v \in V(G)}^{}\deg v \geq |E(G)| \) 
 	
 \end{enumerate}
+\end{multicols}
 \end{document}
 
