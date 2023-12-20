@@ -41,7 +41,7 @@
 \footnotesize
 
 \begin{center}
-     \Large{\textbf{MATH 350; Midterm Review.}} \\
+	\Large{\textbf{MATH 350 Results.}} \\
 \end{center}
 \begin{multicols}{3}
 \setlength{\premulticols}{1pt}
@@ -74,6 +74,7 @@
 \textbf{Lemma 4.3.} Let \( T \) be a spanning tree of \( G \). Let \( f \in E(G) \setminus E(T) \). Then there exists a unique fundamental cycle of \( f \) with respect to \( T \). \\
 \textbf{Lemma 4.4.} Let \( T \) be a spanning tree of \( G \), \( f \in E(G) \setminus E(T) \), and \( C \) be the fundamental cycle of \( f \) with respect to \( T \). Let \( T' = (T+f) \setminus e \) be the graph obtained from \( T \) by adding \( f \) and deleting some \( e \in E(C). \) Then \( T' \) is a spanning tree of \( G \). \\
 \textbf{Corollary 4.5.} Let \( G,T,f,C,e \) be as in Lemma 4.4. Let \( w : E(G) \to \mathbb{R}_+ \). If \( T \) is \( \mbox{mst}(G,w) \), then \( w(f) \geq w(e). \) \\
+\textbf{Kruskal's Algorithm:} Input a connected non-null graph \( G \) and \( w : E(G) \to \mathbb{R}_{+}  \). For \( i = 1, 2, \hdots , |V(G)| - 1 \), let \( e_{i} \in E(G) \) be chosen with \( w(e_{i} ) \) minimum such that \( e_{i} \notin \{ e_1, e_2, \hdots , e_{i  -   1}  \}  \) and \( \{ e_1, e_2, \hdots , e_{i}  \}  \) does not contain the edge set of a cycle. Output is a tree \( T \) with \( V(T) = V(G) \) and \( E(T) = \{ e_1, \hdots , e_{|V(G)| - 1}  \}  \). \\
 \textbf{Theorem 4.6.} Let \( G \) be a graph, \( w :E(G) \to \mathbb{R}_+ \) be such that \( w(e) \neq w(f) \) for any \( e,f \in E(G) \) with \( e \neq f \). Let \( T \) be \( \mbox{mst}(G,w) \) and \( E(T) = \{ e_1,e_2,\hdots ,e_k \}  \) be such that \( w(e_1) < \cdots < w(e_k) \). Then for every \( i \) with \( 1 \leq i \leq k \), \( e_i \) is the edge of minimum weight subject to \( e_i \notin \{ e_1, \hdots , e_{i-1}  \}  \) and \( \{ e_1, \hdots , e_i \} \) does not contain the edge set of a cycle. \\
 \textbf{Theorem 4.7.} Kruskal's algorithm outputs \( \mbox{mst}(G,w) \). \\
 \textbf{Cayley's formula.} The complete graph on \( n \) vertices has \( n^{n-2}  \) spanning trees. 
@@ -121,6 +122,81 @@ Then \( G \) has a Hamiltonian cycle.
 \section{Directed Graphs \& Network Flows}
 \textbf{Lemma 9.1.} Let \( G \) be a digraph. Let \( s, t \in V(G) \). Then there does not exist a directed path in \( G \) from \( s \) to \( t \) iff there exists \( X \subseteq V(G) \) such that \( s \in X \), \( t \in V(G) \setminus X \), and \( \delta ^{+}(X) = \emptyset   \). \\
 \textbf{Lemma 9.2.} Let \( \varphi  \) be an \( (s,t) \)-flow on a digraph \( G \) with value \( k \). Then for any \( X \subseteq V(G) \) such that \( s \in X \), \( t \in V(G) \setminus X \), we have \[\sum_{e \in \delta ^{+}(X) }^{}\varphi (e) - \sum_{e \in \delta ^{-}(X)}^{}\varphi (e) = k.\]
+\textbf{Lemma 9.3.} Let \( \varphi  \) be an integral \( (s,t) \)-flow on a digraph \( G \) withvalue \( k \geq 0 \). Then there exist directed paths \( P_1, \hdots , P_{k}  \) from \( s \) to \( t \) such that every edge of \( G \) belongs to at most \( \varphi (e) \) of these paths (paths may not be unique). \\
+\textbf{Lemma 9.4.} Let \( \varphi \) be an integral \( c \)-admissible \( (s,t) \)-flow on \( G \) with value \( k \). If there exists a \( \varphi \)-augmenting path \( P \) from \( s \) to \( t \) then there exists an integral \( c \)-admissible \( (s,t) \)-flow on \( G \) of value \( k + 1 \). \\
+\textbf{Theorem 9.5 (Max flow min cut).} Let \( k \in \mathbb{N}  \). Then exactly one of the following holds:
+\begin{enumerate}
+	\item There exists an integral \( c \)-admissible \( (s,t) \)-flow of value \( \geq k \).
+	\item There exists \( X \subseteq V(G) \), \( s \in X \), \( t \in V(G) \setminus X \) such that \( \sum_{e \in \delta ^{+} (X)}^{} c(e) < k \).
+\end{enumerate}
+\section{Independence \& Cliques}
+\textbf{Properties:} For \( P_{n}  \): \( \nu = \lfloor n/2 \rfloor  \), \( \tau = \lfloor n / 2 \rfloor \), \( \alpha =\lceil n/2 \rceil \), \( \rho = \lceil n / 2 \rceil  \); for \( C_{n}  \): \( \nu = \lfloor n / 2 \rfloor  \), \( \tau = \lceil n / 2 \rceil  \), \( \alpha = \lfloor n / 2 \rfloor  \), \( \rho = \lceil n / 2 \rceil  \); for \( K_{n}  \): \( \nu = \lfloor n / 2 \rfloor  \), \( \tau = n - 1 \), \( \alpha = 1 \), \( \rho = \lceil n / 2 \rceil  \). \\
+\textbf{ALSO:} \( \rho (G) \geq \alpha(G) \) and \( \rho (G) \geq |V(G)| / 2 \). \\
+\textbf{Lemma 10.1.} For any graph \( G \), \( \alpha(G) + \tau(G) = |V(G)| \). \\
+\textbf{Lemma 10.2.} Let \( G \) be simple and such that every vertex of \( G \) is incident to an edge, then \( \nu (G) + \rho (G) = |V(G)| \). \\
+\textbf{Corollary 10.3.} Let \( G \) be a simple bipartite graph such that every vertex is incident to an edge, then \( \alpha(G) = \rho (G) \). \\
+\section{Ramsey Numbers}
+\textbf{Properties:} \( R(s,t) = R(t,s) \), \( R(1,t) = 1 \), \( R(2, t) = t \), \( R(3,3) = 6 \), \( R(3,4) = 9 \). \\
+\textbf{Ramsey Theorem.} \( R(s,t) \) exists for every \( s,t \geq 1 \) and \( R(s,t) \leq R(s- 1, t) + R(s, t-1) \). \\
+\textbf{Corollary 10.5.} For \( s, t \geq 1 \), \( R(s,t) \leq \binom{s + t - 2}{s - 1}  \).
+\textbf{Lemma 10.6.} If \( \binom{N}{s} 2^{1 - \binom{s}{2} } < 1 \) then there exists a simple graph \( G \) with \( |V(G)| = N \) and no clique or independent set of size \( s \) (so \( R(s,s) > N \) ). \\
+\textbf{Theorem 10.7.} For \( s \geq 2 \), \( R(s,s) \geq 2^{s / 2} = (\sqrt{2} )^{s}  \). \\
+\textbf{Theoreom 10.8.} \( R_{k} (s_1, \hdots , s_{k} ) \) exists for all \( k, s_1, \hdots , s_{k} \geq 1  \). Furthermore, \( R_{k} (s_1, \hdots , s_{k} ) \leq R_{k - 1} (R_{2} (s_1, s_2), s_3, \hdots , s_{k} )  \). \\
+\textbf{Schur.} For every \( k \geq 1 \) there exists \( N \geq 1 \) such that in every coloring of \( \{ 1, 2, \hdots , N \}  \) in \( k \) colors there exist \( x,y,z \) of the same color and not necessarily distinct such that \( x + y = z \). \\
+\section{Vertex Coloring}
+\textbf{Properties.} \( G \) is 1-colorable iff \( G \) is edgeless; \( G \) is 2-colorable iff \( G \) is bipartite. \( G \) is 1-degenerate iff forest. \( \chi_{} (K_{n} ) = n \) \\
+\textbf{Lemma 11.1.} Let \( G \) be loopless, then
+\begin{enumerate}
+	\item \( \chi(G) \geq \omega (G) \) 
+	\item \( \chi_{} (G)  \geq \lceil \frac{|V(G)|}{\alpha(G)}  \rceil \).
+\end{enumerate}
+\textbf{Lemma 11.2.} If \( G \) is loopless and \( k \)-degenerate then \( \chi_{} (G) \leq k + 1 \). In particular, \( \chi_{} (G) \leq \Delta (G) + 1 \). \\
+\textbf{Greedy coloring algorithm.} Input a loopless graph \( G \) and an ordering \( (v_1, v_2, \hdots , v_{n} ) \) of \( V(G) \). Outputs a \( k \)-coloring of \( G \) for some \(  k\). 
+\begin{enumerate}
+	\item Colour \( v_1 \) using color 1
+	\item once \( \{ v_1, \hdots , v_{i - 1}  \}  \) receive colors, color \( v_{i}  \) with the smallest integer \( l \in \mathbb{N}  \) that is not a color of any of the neighbours of \( v_{i}  \) so far.
+\end{enumerate}
+\textbf{Brooks.} Let \( G \) be connected loopless s.t. \( G \) is not complete and not an odd cycle. Then \( \chi (G) \leq \Delta (G) \). \\
+\section{Edge Coloring}
+\textbf{Properties.} \( \chi_{} '(K_{4} ) = 3 \), \( \chi \ ' ( C_{2k+1})  = 3\). 1-factor iff perfect matching. \\
+\textbf{Lemma 12.1.} \( \Delta (G) \leq \chi_{} ' (G) \leq 2 \Delta (G) - 1 \), for any loopless graph \( G \) with \( \Delta (G) \geq 1 \). \\
+\textbf{Lemma 12.2.} Let \( G \) be a graph with \( \Delta (G) \leq k \). Then there exists a \( k \)-regular graph \( H \) such that \( G \) is a subgraph of \( H \). Moreover, if \( G \) is loopless (resp. bipartite) then \( H \) can be chosen to be loopless (resp. bipartite). (If \( G \) is simple then \( H \) can be chosen to be simple). \\
+\textbf{Theorem 12.3.} If \( G \) is bipartite then \( \chi_{} ' (G) = \Delta (G) \). \\
+\textbf{Lemma 12.4.} Let \( G \) be a loopless \( 2k \)-regular graph. Then \( E(G) \) can be partitioned into \( k \) 2-factors. \\
+\textbf{Shannon.} Let \( G \) be a loopless graph then \( \chi_{} ' (G) \leq 3 \lceil \frac{\Delta (G)}{2}  \rceil  \). \\
+\textbf{Vizing.} If \( G \) simple then \( \chi_{} ' (G) \leq \Delta (G) + 1 \).
+\section{Minors}
+\textbf{Facts.} No loop minor iff forest; no \( K_2 \) minor iff no \( K_2 \) subgraph; no \( K_3 \) minor iff no cycles of length \( \geq 3 \) iff forest with added loops and parallel edges. \\
+\textbf{Hadwiger:} For \( 0 \leq t \geq 5 \) if \( G \) is a loopless graph with no \( K_{t+1}  \) minor then \( \chi_{} (G) \leq t \). Also, \( K_{t+1}  \) subgraph implies \( \chi_{} (G) \geq t + 1 \). \\
+\textbf{Subdivision.} If \( G \) is a subdivision of \( H \) then \( H \) is a minor of \( G \) (converse does not hold). \\
+\textbf{Lemma 13.1.} If \( G \) is 3-connected then \( G \) has a \( K_4 \) minor. \\
+\textbf{Lemma 13.2.} Let \( G \) be a simple graph with no \( K_4 \) minoir. Let \( X \) be a clique in \( G \) with \( |X| \leq 2 \) (can = 0) and \( X \neq V(G) \). Then there is a vertex \( v \in V(G) - X \) such that \( \deg _{G} v \leq 2 \). \\
+\textbf{Theorem 13.3.} If \( G \) is a loopless graph with no \( K_4 \) minor then \( \chi(G) \leq 3 \).
+\section{Planar Graphs}
+\textbf{Jordan Curve.} Any closed simple curve separates the plane into two regions. \\
+\textbf{Lemma 14.1.} Let \( G \) be a graph drawn in the plane, \( e \in E(G) \). Then the regions on different sides of \( e \) are the same if and only if \( e \) is a cut-edge of \( G \). \\
+\textbf{Euler's Formula.} Let \( G \) be a planar non-null graph. Then \[|V(G)| - |E(G)| + \operatorname{Reg}(G) = 1 + \operatorname{comp}(G) \] 
+\textbf{Lemma 14.3.} Let \( G \) be a connected simple graph drawn in the plane with \( |E(G)| \geq 2 \). Then the length of every region of \( G \) is at least 3, and if it is 3 then the boundary is a cycle of length 3. \\
+\textbf{Lemma 14.4.} If \( G \) is a simple planar graph, \( |E(G)| \geq 2 \), then \[|E(G)| \leq 3|V(G)| - 6\] and if \( G \) has no \( K_3 \) subgraph then \[|E(G)| \leq 2|V(G)| - 4.\]
+\textbf{Fact:} \( K_5 \), \( K_{3,3}  \), and their subdivisions are the only minimal non-planar graphs. \\
+\textbf{Corollary 14.5.} Let \( G \) be a simple planar graph, \( |E(G)| \geq 2 \), then \( \sum_{v \in V(G)}^{} (6 - \deg v)  \geq 12.\) \\
+\textbf{Corollary 14.6.} If \( G \) is a simple non-null planar grapg then for some \( v \in V(G) \) \( \deg _{G} v \leq 5 \). Thus, planar graphs are \( 5 \)-degenerate so that \( \chi_{} (G) \leq 6 \).
+\section{Kuratowski}
+\textbf{Lemma 15.1.} Let \( G \) be a 2-connected loopless graph drawn in the plane. Then every region is bounded by a cycle. \\
+\textbf{Lemma 15.2.} Let \( C \) be a cycle, \( X,Y \subseteq V(G) \), \( |V(C)| \geq 2 \), then one of the following holds:
+\begin{enumerate}
+	\item There exist \( z_1, z_2 \in V(C) \) distinct, two paths \( P,Q \) with ends \( z_1 \) and \( z_2 \) such that \( P \cup Q = C\), \( X \subseteq V(P) \) and \( Y \subseteq V(Q) \).
+	\item There exist distinct \( x_1, x_2 \in X \) , \( y_1, y_2 \in Y \) such that \( x_1, y_1, x_2, y_2 \) appear on \( C \) in this order. 
+	\item \( X = Y \) and \( |X|=|Y|=3 \).
+	
+	
+	
+\end{enumerate}
+\textbf{Kuratowski-Wagner.} A graph \( G \) is non-planar if and only if either \( K_5 \) or \( K_{3,3}   \) is a minor of \( G \). \\
+\textbf{EQUIVALENTLY:} A graph \( G \) is non-planar if and only if it contains a subdivision of \( K_5 \) or \( K_{3,3}  \) as a \textbf{subgraph}. \\
+\textbf{Four color.} If \( G \) is planar and loopless then \( \chi_{} (G) \leq 4 \). \\
+\textbf{Tait.} Let \( G \) be a planar triangulation and let \( G^{\ast}  \) be its dual. THen \( \chi_{} (G) \leq 4 \iff \chi_{} ' (G^{\ast} ) = 3 \). \\
+\textbf{Kaufman.} For any pair of bracketings of the product \( u_1\times \cdots \times u_{m}  \) there is a choice of \( u_{n} \in \{ i,j,k \}  \) for every \( 1 \leq n \leq m \) such that the corresponding products are the same and non-zero.
 \section{Definitions}
 \begin{enumerate}
 	\item \textbf{Matching.} A matching \( M \subseteq E(G) \) in a graph \( G \) is a collection of non-loop edges so that every vertex of \( G \) is incident to at most one edge of \( M \).
